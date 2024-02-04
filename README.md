@@ -18,7 +18,7 @@ The preact client for `fasty-task`, an app to manage your scholar life. This cli
 
 ### Table of Content
 
-- [Run Locally](#run-locally-)
+- [Run Locally](#run-locally-%EF%B8%8F)
 - [License](#license-)
 
 
