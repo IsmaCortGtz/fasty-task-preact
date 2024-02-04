@@ -1,0 +1,29 @@
+{
+  "name": "fasty-task-react",
+  "description": "Preact client of Fasty-task",
+  "version": "0.1.0",
+  "author": "Ismael Cortés Gutiérrez",
+  "license": "GPL-3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && cp ./dist/index.html ./dist/404.html",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "preact": "10.19.3"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "2.7.0",
+    "eslint": "8.56.0",
+    "semistandard": "17.0.0",
+    "vite": "5.0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IsmaCortGtz/fasty-task-preact.git"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/semistandard/eslintrc.json"
+  }
+}
