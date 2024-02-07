@@ -5,6 +5,7 @@
   "author": "Ismael Cortés Gutiérrez",
   "license": "GPL-3.0",
   "type": "module",
+  "homepage": "https://ismacortgtz.github.io/fasty-task-preact",
   "scripts": {
     "dev": "vite",
     "build": "vite build && cp ./dist/index.html ./dist/404.html",
