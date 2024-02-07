@@ -1,0 +1,6 @@
+{
+  "DEFAULT_BACK_FLOW": "/",
+  "/login": "/",
+  "/singup": "/",
+  "/setup": "/"
+}

@@ -1,0 +1,16 @@
+.Button-component_input_button {
+  padding: 15px;
+  border-radius: 15px;
+  background-color: var(--button-main-color);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Button-component_input_button:hover {
+  background-color: var(--button-hover-color);
+}
+
+.Button-component_input_button:active {
+  background-color: var(--button-press-color);
+}

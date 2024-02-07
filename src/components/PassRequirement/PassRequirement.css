@@ -1,0 +1,12 @@
+.PassRequirement-component_p-message {
+  color: var(--input-wrong-color);
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0 15px;
+}
+
+.PassRequirement-component_p-message-hide {
+  padding: 0;
+  display: none;
+}

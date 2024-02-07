@@ -1,0 +1,19 @@
+.Checkbox-component_input_checkbox {
+  accent-color: var(--checkbox-accent-color);
+  margin: 0 5px;
+}
+
+.Checkbox-component_label {
+  font-size: 0.9rem;
+  color: var(--checkbox-label-color);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .Checkbox-component_label {
+    font-size: 1.1rem;
+  }
+}

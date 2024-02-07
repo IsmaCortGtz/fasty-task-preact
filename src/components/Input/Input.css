@@ -1,0 +1,15 @@
+.Input-component_input_text {
+  padding: 15px;
+  border-radius: 15px;
+  background-color: var(--input-main-color);
+  border: none;
+}
+
+.Input-component_input_text-red {
+  border: 2px solid var(--input-wrong-color);
+}
+
+.Input-component_input_text:focus {
+  background-color: var(--input-focus-color);
+  outline: none;
+}

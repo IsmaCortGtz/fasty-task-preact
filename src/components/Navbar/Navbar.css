@@ -1,0 +1,28 @@
+.navbar-component_container {
+  display: flex;
+  gap: 15px;
+  background-color: var(--main-color);
+  padding: 10px;
+  align-items: center;
+}
+
+.Navbar-Back-component_icon {
+  padding: 20px;
+  cursor: pointer;
+  transition: scale 0.1s;
+}
+
+.Navbar-Back-component_icon:hover {
+  scale: 1.2;
+}
+
+.navbar-component_icon-image {
+  width: 50px;
+  cursor: pointer;
+}
+
+.navbar-component_title {
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
