@@ -1,5 +1,5 @@
 // Libs
-import Icon from '../Icon/Icon';
+import Icon from '../../Icon/Icon';
 
 // Component
 export default function Back ({ onClick }) {

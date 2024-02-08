@@ -35,3 +35,11 @@ export function saveStringStorage (objectData, key) {
     console.error(e);
   }
 }
+
+export function removeStorage (key) {
+  try {
+    window.localStorage.removeItem(key);
+  } catch (e) {
+    console.error(e);
+  }
+}

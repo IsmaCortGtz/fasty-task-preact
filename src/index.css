@@ -2,7 +2,9 @@
   --background-color: #000b25;
   --main-color: #021030;
   --text-color: #cad2e5;
+  --sub-text-color: #a1a4ab;
   --anchor-color: #698de0;
+  --course-label-color: #23418c;
 
   --input-main-color: #0f1c3c;
   --input-focus-color: #1c2847;
@@ -15,6 +17,9 @@
   --button-main-color: #1c2847;
   --button-hover-color: #1c2a4f;
   --button-press-color: #141c2e;
+
+  --toast-message-color: #23418c;
+  --toast-message-bar: #2f5ac7;
 
   --toast-success-color: rgb(24, 107, 46);
   --toast-success-bar: rgb(33, 135, 60);
@@ -66,9 +71,9 @@ p {
 }
 
 .toastify {
-  border-bottom: 5px solid var(--toast-success-bar);
+  border-bottom: 5px solid var(--toast-message-bar);
   border-radius: 10px;
-  background: var(--toast-success-color);
+  background: var(--toast-message-color);
   box-shadow: none;
   font-weight: bold;
   user-select: none;

@@ -1,9 +1,12 @@
 // Libs
 import { useSignal } from '@preact/signals';
-import { Link } from 'preact-router';
+import { Link, route } from 'preact-router';
+import { useContext, useEffect } from 'preact/hooks';
+import { GlobalStateContext } from '../../app/State/State';
 import { homepage } from '../../app/const';
-import { wrongToast } from '../../utils/toast';
+import { succesToast, wrongToast, newToast } from '../../utils/toast';
 import { validatePassword, validateUsername } from '../../utils/validateCredentials';
+import { singup } from '../../api/user';
 
 // Styles and assets
 import './Singup.css';
@@ -17,6 +20,12 @@ import PassRequirement from '../../components/PassRequirement/PassRequirement';
 // Singup Page
 export default function Singup () {
   // Input value state
+  const global = useContext(GlobalStateContext);
+
+  useEffect(() => {
+    if (global.stateless.USER_AUTH_JWT) { newToast("You're already logged."); route(homepage('/')); }
+  }, []);
+
   const username = useSignal('');
   const usernameValid = useSignal(false);
   const password = useSignal('');
@@ -61,7 +70,14 @@ export default function Singup () {
   };
 
   const handleSingup = () => {
-    wrongToast('Feauture not ready yet!');
+    singup(global.stateless.API_URL, { username: username.value, password: password.value })
+      .then(data => {
+        global.stateless.USER_AUTH_JWT = data.token;
+        global.actions.saveOneStateless('USER_AUTH_JWT');
+        succesToast('Account created!');
+        route(homepage('/'));
+      })
+      .catch(error => wrongToast(error.message));
   };
 
   const handleHidePasswordChange = (event) => { hidePassword.value = !event.target.checked; };

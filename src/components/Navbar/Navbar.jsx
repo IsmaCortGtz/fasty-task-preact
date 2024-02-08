@@ -6,7 +6,9 @@ import { GlobalStateContext } from '../../app/State/State';
 
 // Styleas and assets
 import Icon from './../../assets/icon.svg';
-import Back from './Back';
+import Back from './Buttons/Back';
+import Course from './Buttons/Course';
+import Pages from './Buttons/Pages';
 import routeflow from './routeflow.json';
 import './Navbar.css';
 
@@ -27,14 +29,22 @@ export default function Navbar () {
   };
 
   return (
-    <nav className='navbar-component_container'>
+    <>
+      <nav className='navbar-component_container'>
+        {
+          !['/', '/schedule', '/subjects', '/account'].includes(global.stateTemp.CURRENT_PAGE.value) && !!global.stateless.API_URL
+            ? <Back onClick={goBack} />
+            : null
+        }
+        <img onClick={goHome} src={Icon} alt='fasty-task' className='navbar-component_icon-image' />
+        <h1 onClick={goHome} className='navbar-component_title'>Fasty Task</h1>
+        <Course />
+      </nav>
       {
-        global.stateTemp.CURRENT_PAGE.value !== '/' && !!global.stateless.API_URL
-          ? <Back onClick={goBack} />
-          : null
-      }
-      <img onClick={goHome} src={Icon} alt='fasty-task' className='navbar-component_icon-image' />
-      <h1 onClick={goHome} className='navbar-component_title'>Fasty Task</h1>
-    </nav>
+          ['/', '/account', '/schedule', '/subjects'].includes(global.stateTemp.CURRENT_PAGE.value) && !!global.stateless.USER_AUTH_JWT
+            ? <Pages />
+            : null
+        }
+    </>
   );
 }

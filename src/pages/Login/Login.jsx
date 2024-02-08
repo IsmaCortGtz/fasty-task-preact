@@ -1,8 +1,10 @@
 // Libs
-import { Link } from 'preact-router';
+import { Link, route } from 'preact-router';
 import { useSignal } from '@preact/signals';
 import { homepage } from '../../app/const';
-import { wrongToast } from '../../utils/toast';
+import { wrongToast, succesToast, newToast } from '../../utils/toast';
+import { useContext, useEffect } from 'preact/hooks';
+import { GlobalStateContext } from '../../app/State/State';
 
 // Styles and assets
 import './Login.css';
@@ -11,10 +13,16 @@ import './Login.css';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import Checkbox from '../../components/Checkbox/Checkbox';
+import { login } from '../../api/user';
 
 // Singup Page
 export default function Singup () {
   // Login inputs states
+  const global = useContext(GlobalStateContext);
+  useEffect(() => {
+    if (global.stateless.USER_AUTH_JWT) { newToast("You're already logged."); route(homepage('/')); }
+  }, []);
+
   const username = useSignal('');
   const password = useSignal('');
   const hidePassword = useSignal(true);
@@ -29,7 +37,16 @@ export default function Singup () {
   const handleUsernameChange = (event) => { username.value = event.target.value; };
   const handlePasswordChange = (event) => { password.value = event.target.value; };
   const handleHidePasswordChange = (event) => { hidePassword.value = !event.target.checked; };
-  const handleLogin = () => wrongToast('Feauture not ready yet!');
+  const handleLogin = () => {
+    login(global.stateless.API_URL, { username: username.value, password: password.value })
+      .then(data => {
+        global.stateless.USER_AUTH_JWT = data.token;
+        global.actions.saveOneStateless('USER_AUTH_JWT');
+        succesToast('Succesfull logged!');
+        route(homepage('/'));
+      })
+      .catch(error => wrongToast(error.message));
+  };
 
   // Render
   return (
